@@ -1,0 +1,1 @@
+﻿http://docs.identityserver.io/en/latest/intro/packaging.html
