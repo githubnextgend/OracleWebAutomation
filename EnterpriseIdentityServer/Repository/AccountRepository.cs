@@ -29,6 +29,8 @@ namespace EnterpriseIdentityServer.Repository
                 UserGuid = userGuid,
                 Username = username,
                 EncryptedPassword = password.Sha256(),
+                Organization=organization,
+                Email=email,
                 Phone = phone
             });
         }

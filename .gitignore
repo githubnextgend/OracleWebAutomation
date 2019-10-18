@@ -4,3 +4,5 @@
 
 /OCIClientLibCore/obj
 /OCIClientLibCore/bin/Debug/netcoreapp3.0
+/EnterpriseIdentityServer/bin/prod/netcoreapp3.0
+/EnterpriseIdentityServer/obj
