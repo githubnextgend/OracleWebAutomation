@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using EnterpriseIdentityServer.Model;
 using EnterpriseIdentityServer.Repository;
@@ -62,13 +63,24 @@ namespace EnterpriseIdentityServer
             var IdentityServerCon = Configuration["ConnectionStrings:IdentityServerConnection"];
 
 
+            var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+            services.AddMvcCore().AddJsonFormatters(); //Adding mvc and able to work with json.
+            services.AddScoped<IAuthRepository, AuthRepository>();
 
             services.AddIdentityServer()
+                
+                    .AddInMemoryClients(new List<Client>())
+                    .AddInMemoryIdentityResources(new List<IdentityResource>())
+                    .AddInMemoryApiResources(new List<ApiResource>())
+                    //.AddTestUsers(new List<TestUser>())
                     .AddDeveloperSigningCredential()
                     .AddInMemoryApiResources(new List<ApiResource>()
                      {
                          new ApiResource("api.sample", "Enterprise Identity API")
-                     })                    
+                     })
+                    .AddConfigurationStore(options =>
+                            options.ConfigureDbContext = builder =>
+                                builder.UseSqlServer(IdentityServerCon, sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)))
                     .AddInMemoryClients(new List<Client>()
                     {
                         new Client
@@ -88,32 +100,22 @@ namespace EnterpriseIdentityServer
                     });
 
 
-            services.AddDbContext<EnterpriseIdentityDbContext>(
-                                 options => options.UseSqlServer(IdentityServerCon));
-         
-
-
-            //services.AddControllers();
-
-
-
-            //services.AddOptions();
-            //services.Configure<GlobalAppSettings>(ConfigurationRoot);
+            services.AddDbContext<EnterpriseIdentityDbContext>(options => options.UseSqlServer(IdentityServerCon));   
+            services.AddControllers();
             services.AddTransient<IAccountRepository, AccountRepository>();
-            services.AddMvc()
-                    .AddControllersAsServices();
-
+            services.AddMvc().AddControllersAsServices();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new  OpenApiInfo{ Title = "Enterprise Identity", Version = "v1" });
-
             });
+            
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+           
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -124,7 +126,7 @@ namespace EnterpriseIdentityServer
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
-
+            app.UseIdentityServer();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/", async context =>
