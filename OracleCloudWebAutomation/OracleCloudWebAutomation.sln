@@ -3,24 +3,37 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29403.142
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OracleCloudWebAutomation", "OracleCloudWebAutomation.csproj", "{782D3955-4A9E-4222-8F02-A94DDC34A421}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OracleCloudWebAutomation", "OracleCloudWebAutomation.csproj", "{782D3955-4A9E-4222-8F02-A94DDC34A421}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OCIClientLibCore", "..\OCIClientLibCore\OCIClientLibCore.csproj", "{A0D883A1-F529-40FA-B0C4-BD10180B3775}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OCIClientLibCore", "..\OCIClientLibCore\OCIClientLibCore.csproj", "{A0D883A1-F529-40FA-B0C4-BD10180B3775}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnterpriseIdentityServer", "..\EnterpriseIdentityServer\EnterpriseIdentityServer.csproj", "{5B94A301-3DEA-4AC5-BC1A-B13E56A05C9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		prod|Any CPU = prod|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{782D3955-4A9E-4222-8F02-A94DDC34A421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{782D3955-4A9E-4222-8F02-A94DDC34A421}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{782D3955-4A9E-4222-8F02-A94DDC34A421}.prod|Any CPU.ActiveCfg = prod|Any CPU
+		{782D3955-4A9E-4222-8F02-A94DDC34A421}.prod|Any CPU.Build.0 = prod|Any CPU
 		{782D3955-4A9E-4222-8F02-A94DDC34A421}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{782D3955-4A9E-4222-8F02-A94DDC34A421}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A0D883A1-F529-40FA-B0C4-BD10180B3775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A0D883A1-F529-40FA-B0C4-BD10180B3775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0D883A1-F529-40FA-B0C4-BD10180B3775}.prod|Any CPU.ActiveCfg = prod|Any CPU
+		{A0D883A1-F529-40FA-B0C4-BD10180B3775}.prod|Any CPU.Build.0 = prod|Any CPU
 		{A0D883A1-F529-40FA-B0C4-BD10180B3775}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0D883A1-F529-40FA-B0C4-BD10180B3775}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B94A301-3DEA-4AC5-BC1A-B13E56A05C9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B94A301-3DEA-4AC5-BC1A-B13E56A05C9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B94A301-3DEA-4AC5-BC1A-B13E56A05C9D}.prod|Any CPU.ActiveCfg = prod|Any CPU
+		{5B94A301-3DEA-4AC5-BC1A-B13E56A05C9D}.prod|Any CPU.Build.0 = prod|Any CPU
+		{5B94A301-3DEA-4AC5-BC1A-B13E56A05C9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B94A301-3DEA-4AC5-BC1A-B13E56A05C9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
